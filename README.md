@@ -4,6 +4,7 @@ Quickly pack .py module into source distribution.
 
 * no `setup.py` is needed
 * resulting `.zip` file is **executable**
+  (make sure there is main() function)
 
 ##### Usage
 

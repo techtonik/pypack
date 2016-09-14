@@ -15,6 +15,9 @@ importing it.
 Public domain work by:
   anatoly techtonik <techtonik@gmail.com>
 """
+
+__version__ = '0.1'
+
 import os
 import sys
 
@@ -113,7 +116,7 @@ setup(
 )
 """
 
-if __name__ == '__main__':
+def main():
   if not sys.argv[1:]:
     sys.exit("usage: pack.py <module.py>")
 
@@ -147,3 +150,5 @@ if __name__ == '__main__':
   zf.writestr('PKG-INFO', '')
   zf.close()
 
+if __name__ == '__main__':
+  main()
