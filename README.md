@@ -1,15 +1,15 @@
 Quickly pack .py module into source distribution.
 
-Features:
+##### Features
 
 * no `setup.py` is needed
 * resulting `.zip` file is **executable**
 
-Usage:
+##### Usage
 
-* [ ] Pack .zip archive
+* [ ] Pack your module into .zip archive
 
-    pypack.py <module.py>
+        pypack.py <module.py>
 
 * [ ] Write changelog
 
@@ -23,5 +23,7 @@ Usage:
 
 * [ ] Tag release
 
+    ```
     git tag -a
     git push --follow-tags
+    ```
