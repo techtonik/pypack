@@ -1,10 +1,22 @@
-Quickly pack .py module into source distribution.
+Packs .py module into executable .zip source distribution.
 
-##### Features
+No extra files required - necessary package fields are read
+from the .py module, without imporing it:
 
-* no `setup.py` is needed
-* resulting `.zip` file is **executable**
-  (make sure there is main() function)
+  * `name` - extracted from the module filename
+  * `__author__`
+  * `__version__`
+  * `__url__`
+
+Also detects and inserts these optional fields:
+
+  * `__license__`
+  * `description` - first line of module docstring
+
+No `setup.py` is needed. Resulting `.zip` file is
+**executable**, so make sure the module exports `main()`
+function.
+
 
 ##### Usage
 
