@@ -1,5 +1,9 @@
 Packs .py module into executable .zip source distribution.
 
+See also https://github.com/takluyver/flit
+
+#### Features
+
 No extra files required - necessary package fields are read
 from the .py module, without imporing it:
 
@@ -13,7 +17,7 @@ Also detects and inserts these optional fields:
   * `__license__`
   * `description` - first line of module docstring
 
-No `setup.py` is needed. Resulting `.zip` file is
+`setup.py` is not needed. Resulting `.zip` file is
 **executable**, so make sure the module exports `main()`
 function.
 
