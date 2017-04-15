@@ -1,7 +1,8 @@
 Packs .py module into executable .zip source distribution.
 
-See also https://github.com/takluyver/flit  
-See also http://ccpgames.github.io/pypackage/
+**See also**:
+* https://github.com/takluyver/flit
+* http://ccpgames.github.io/pypackage/
 
 #### Features
 
