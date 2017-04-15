@@ -1,6 +1,7 @@
 Packs .py module into executable .zip source distribution.
 
-See also https://github.com/takluyver/flit
+See also https://github.com/takluyver/flit  
+See also http://ccpgames.github.io/pypackage/
 
 #### Features
 
@@ -17,9 +18,10 @@ Also detects and inserts these optional fields:
   * `__license__`
   * `description` - first line of module docstring
 
-`setup.py` is not needed. Resulting `.zip` file is
-**executable**, so make sure the module exports `main()`
-function.
+`setup.py` is not needed (it is created automatically when
+creating archive, because Python still requires it). Resulting
+`.zip` file is **executable**, so make sure the module exports
+`main()` function.
 
 
 ##### Usage
