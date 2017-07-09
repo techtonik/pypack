@@ -18,10 +18,10 @@ Features:
   * [x] generate executable script if main() is found
   * [x] include dependencies from requirements.txt
 
-Public domain work by:
-  anatoly techtonik <techtonik@gmail.com>
 """
 
+__author__ = 'anatoly techtonik <techtonik@gmail.com>'
+__license__ = 'Public Domain'
 __version__ = '0.2'
 
 import os
