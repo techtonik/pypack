@@ -12,6 +12,10 @@ importing it.
   * [x] url
   * [x] description (first line of module docstring)
 
+Features:
+
+  * [x] make .zip executable if main() is defined
+
 Public domain work by:
   anatoly techtonik <techtonik@gmail.com>
 """
@@ -44,6 +48,14 @@ def get_description(path):
         line = next(mf)
         line = line.decode('utf-8').strip()
       return line
+
+def get_main(path):
+  '''Return True if module defines main() function'''
+  with open(path, 'rb') as mf:
+    for line in mf:
+      if line.startswith('def main('):
+        return True
+
 
 def zipadd(archive, filename, newname):
   '''Add filename to archive. `newname` is required. Otherwise
@@ -139,10 +151,13 @@ def main():
   if os.path.exists(packname):
     os.remove(packname)
   zf = zipadd(packname, modpath, os.path.basename(modpath))
-  print("[*] Making %s executable" % (packname))
-  # http://techtonik.rainforce.org/2015/01/shipping-python-tools-in-executable-zip.html
-  text = MiniJinja(BASE).render_string(MAINTPL, **tplvars)
-  zf.writestr('__main__.py', text)
+  if not get_main(modpath):
+     print("[*] main() not found, not making executable")
+  else:  
+     print("[*] Making %s executable" % (packname))
+     # http://techtonik.rainforce.org/2015/01/shipping-python-tools-in-executable-zip.html
+     text = MiniJinja(BASE).render_string(MAINTPL, **tplvars)
+     zf.writestr('__main__.py', text)
   print("[*] Making %s installable" % (packname))
   text2 = MiniJinja(BASE).render_string(SETUPTPL, **tplvars)
   zf.writestr('setup.py', text2)
