@@ -15,6 +15,7 @@ importing it.
 Features:
 
   * [x] make .zip executable if main() is defined
+  * [x] generate executable script if main() is found
 
 Public domain work by:
   anatoly techtonik <techtonik@gmail.com>
@@ -121,6 +122,10 @@ setup(
 
     py_modules=['{{ module }}'],
 
+    entry_points = {
+        'console_scripts': ['{{ executable }}'],
+    },
+
     classifiers=[
         'Classifier: Programming Language :: Python :: 2',
         'Classifier: Programming Language :: Python :: 3',
@@ -133,13 +138,16 @@ def main():
     sys.exit("usage: pack.py <module.py>")
 
   modpath = sys.argv[1]
+  modname = os.path.basename(modpath)[:-3]  # and strip extension
   tplvars = dict(
-    module = os.path.basename(modpath)[:-3], # also strip extension
+    module = modname,
     version = get_field(modpath, '__version__'),
     author = get_field(modpath, '__author__'),
     license = get_field(modpath, '__license__'),
     url = get_field(modpath, '__url__'),
-    description = get_description(modpath)
+    description = get_description(modpath),
+
+    executable = ''
   )
 
   if tplvars['version'] == None:
@@ -158,6 +166,7 @@ def main():
      # http://techtonik.rainforce.org/2015/01/shipping-python-tools-in-executable-zip.html
      text = MiniJinja(BASE).render_string(MAINTPL, **tplvars)
      zf.writestr('__main__.py', text)
+     tplvars['executable'] = '%s=%s:main' % (modname, modname)
   print("[*] Making %s installable" % (packname))
   text2 = MiniJinja(BASE).render_string(SETUPTPL, **tplvars)
   zf.writestr('setup.py', text2)
