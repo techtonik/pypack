@@ -9,13 +9,21 @@ $ python -m pypack appvey.py
 ```
 
 **See also**:
+
 * https://github.com/takluyver/flit
 * http://ccpgames.github.io/pypackage/
 
 #### Features
 
-No extra files required - necessary package fields are read
-from the .py module, without imporing it:
+ * No packaging boilerplate
+ * Executable `.zip` file if module provides `main()` function
+ * Command line script entry for the `main()` function
+ * `requirements.txt` detected and included
+
+#### Details
+
+Necessary package fields are read from the .py module, without
+imporing it:
 
   * `name` - extracted from the module filename
   * `__author__`
@@ -27,11 +35,13 @@ Also detects and inserts these optional fields:
   * `__license__`
   * `description` - first line of module docstring
 
-`setup.py` is not needed (it is created automatically when
-creating archive, because Python still requires it). Resulting
-`.zip` file is **executable**, so make sure the module exports
-`main()` function.
+Python packaging still relies on `setup.py`, so it is created
+automatically.
 
+`requirements.txt` should use safe setuptools subset
+https://github.com/pypa/setuptools/issues/1080#issuecomment-313934637
+
+`main()` function is required to enable *executable* features.
 
 ##### Checklist for packaging your module for PyPI
 
