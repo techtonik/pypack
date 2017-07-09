@@ -22,7 +22,8 @@ Features:
 
 __author__ = 'anatoly techtonik <techtonik@gmail.com>'
 __license__ = 'Public Domain'
-__version__ = '0.2'
+__version__ = '0.3'
+__url__ = 'https://github.com/techtonik/pypack'
 
 import os
 import sys
@@ -131,10 +132,22 @@ setup(
     },
 
     classifiers=[
-        'Classifier: Programming Language :: Python :: 2',
-        'Classifier: Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
     ],
 )
+"""
+
+PKGINFO = """\
+Metadata-Version: 1.1
+Name: {{ module }}
+Version: {{ version }}
+Summary: {{ description }}
+Home-page: {{ url }}
+Author: {{ author }}
+License: {{ license }}
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 3
 """
 
 def main():
@@ -181,7 +194,8 @@ def main():
   text2 = MiniJinja(BASE).render_string(SETUPTPL, **tplvars)
   zf.writestr('setup.py', text2)
   print("[*] Making %s uploadable to PyPI" % (packname))
-  zf.writestr('PKG-INFO', '')
+  text3 = MiniJinja(BASE).render_string(PKGINFO, **tplvars)
+  zf.writestr('PKG-INFO', text3)
   zf.close()
 
 if __name__ == '__main__':

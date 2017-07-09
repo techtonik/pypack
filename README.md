@@ -51,13 +51,9 @@ https://github.com/pypa/setuptools/issues/1080#issuecomment-313934637
 
 * [ ] Write changelog
 
-* [ ] Upload archive to PyPI (manually for now)
-  * [ ] Create new version https://pypi.python.org/pypi?%3Aaction=submit_form&name=<module>
-  * [ ] Upload .zip for this version
+* [ ] Upload archive to PyPI
 
-* [ ] Update PyPI description (also manual process)
-  * [ ] Download PKG-INFO
-  * [ ] Edit and upload
+        twine upload <package.zip>
 
 * [ ] Tag release
 
