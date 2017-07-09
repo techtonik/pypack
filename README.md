@@ -1,4 +1,12 @@
-Packs .py module into executable .zip source distribution.
+No boilerplate way to create executable source package for Python module.
+
+```
+$ python -m pypack appvey.py
+[*] Packing appvey.py into appvey-1234.zip
+[*] Making appvey-1234.zip executable
+[*] Making appvey-1234.zip installable
+[*] Making appvey-1234.zip uploadable to PyPI
+```
 
 **See also**:
 * https://github.com/takluyver/flit
@@ -25,7 +33,7 @@ creating archive, because Python still requires it). Resulting
 `main()` function.
 
 
-##### Usage
+##### Checklist for packaging your module for PyPI
 
 * [ ] Pack your module into .zip archive
 
