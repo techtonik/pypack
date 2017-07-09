@@ -16,12 +16,13 @@ Features:
 
   * [x] make .zip executable if main() is defined
   * [x] generate executable script if main() is found
+  * [x] include dependencies from requirements.txt
 
 Public domain work by:
   anatoly techtonik <techtonik@gmail.com>
 """
 
-__version__ = '0.2dev'
+__version__ = '0.2'
 
 import os
 import sys
@@ -122,6 +123,9 @@ setup(
 
     py_modules=['{{ module }}'],
 
+    install_requires = '''
+{{ requirements }}
+''',
     entry_points = {
         'console_scripts': ['{{ executable }}'],
     },
@@ -139,6 +143,7 @@ def main():
 
   modpath = sys.argv[1]
   modname = os.path.basename(modpath)[:-3]  # and strip extension
+  moddir = os.path.abspath(os.path.dirname(modpath))
   tplvars = dict(
     module = modname,
     version = get_field(modpath, '__version__'),
@@ -147,6 +152,7 @@ def main():
     url = get_field(modpath, '__url__'),
     description = get_description(modpath),
 
+    requirements = '',
     executable = ''
   )
 
@@ -159,6 +165,10 @@ def main():
   if os.path.exists(packname):
     os.remove(packname)
   zf = zipadd(packname, modpath, os.path.basename(modpath))
+  if os.path.exists(moddir + '/requirements.txt'):
+     print('[*] Including requirements')
+     reqs = open(moddir + '/requirements.txt', 'rb').read().strip()
+     tplvars['requirements'] = reqs
   if not get_main(modpath):
      print("[*] main() not found, not making executable")
   else:  
