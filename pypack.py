@@ -16,7 +16,7 @@ Public domain work by:
   anatoly techtonik <techtonik@gmail.com>
 """
 
-__version__ = '0.1'
+__version__ = '0.2dev'
 
 import os
 import sys
@@ -26,7 +26,7 @@ def get_field(path, name='__version__'):
   for line in open(path, 'rb'):
     # Decode to unicode for PY2/PY3 in a fail-safe way
     line = line.decode('cp437')
-    if name in line:
+    if line.startswith(name):
       # __version__ = "0.9"
       delim = '\"' if '\"' in line else '\''
       return line.split(delim)[1]
