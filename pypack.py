@@ -22,7 +22,7 @@ Features:
 
 __author__ = 'anatoly techtonik <techtonik@gmail.com>'
 __license__ = 'Public Domain'
-__version__ = '0.3'
+__version__ = '1.0'
 __url__ = 'https://github.com/techtonik/pypack'
 
 import os
@@ -56,7 +56,7 @@ def get_main(path):
   '''Return True if module defines main() function'''
   with open(path, 'rb') as mf:
     for line in mf:
-      if line.startswith('def main('):
+      if line.startswith(b'def main('):
         return True
 
 
