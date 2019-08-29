@@ -18,16 +18,15 @@ script:
 jobs:
   include:
     - stage: deploy
+      if: tag IS present
       python: 2.7
       env:
         - TWINE_USERNAME: "__token__"
-        - TWINE_PASSWORD:
-            secure: "vgYo9YrYepaphkNE7HMwkTYdb+wNZMB4j7lOIqqawypsRtNezEUlySEKxbMpjsFjeV4KqhxV2VmxBtQWgR01gXMlME+h63pN20I2jXB7piiuO2J6rJaONSUlRJmJMkXWEzqVDtRuDAAi4uue1mKWCbKMozcSy9uuLvpoCnqt3XvtRuMHhy2WbGEVeGA7w+sVXk00dR5id/i/2Sgj+7eE+bFjophIqgW/VGWLXOaLWasI4eZ0YYEGfca6bqJZE8Xvu7MFWcZ/KiODb3oECFAkQ+t2+YX2wwmANACq9v42WDoEyTo5No+SenRw/Oz6tO4Js3HIRMpN+twVJMQPZcsDPKIspia2/2nrUcWPrclWT0mF53Hk4S1CdxyXMqy4rzCLKyxWw1EQuON7UgwulC6KsEP1V6VYrhwrtR3ym2KO1bfnCyAnp4kRIe/lEjIYq3NrqxbL2GjfpIAql6AizOQDgjhfnhgKxANQAvsKPFKZX67WX0L1fRuMK45q51BamP40NdO1NjoAvo26G3ugIvyQIz7yoV3rmAlllQp2ZqGByeQi2kwipJnO7OH/JI6onbYZ2LDXWn2ydIJ2NzG08JtfdXHxcHidLgoG0VXUf5k+pTmTqKUk3GaRt8saVXrT5ZV+/KiA0iYEgOaibyAszPAht4HmEZwTiHJL0TRBesdZrr0="
+        # TWINE_PASSWORD
+        - secure: "uNe0+pQy5BIbB6ytbpo+VWztkud487k94mM/zOFWKeRFWTJj/lFWe4BNJYnaRDQiNotiu4yluPNNGXFLc3yoLw0vz9dMfqsN8cyOe3nihtK/c3R5MDLXuJltZZkKBRFNjILE5E6Iwn77aTWcBTigrwQ+GjnVREuPj29lLzSx5SPtTY66Las/E4VxJP3RmIDMBlZQNH+/AD3nEycYk1/b1pBSWeuSUjNIgkmKGPq62YsQSL8JUbAmAEhQUhcz3AxRtvFYX/QwqGaWr9U8KBybNTW1VfmnYVYGCEehfhT07eSdf+K3LiyhksWyM1H2eReYZLRLsqUjvscwZB9qX1+MoXXst8rnOujTLn3aAKFHi/z0dxkoik1jFHE4EmNFRONQj7DrdVg9Rhl+42DZwV4eTmZz1gF7k9Rnz3XMPXqbejlr4ToHigeEezenV5siF6OBgmv3bdkq34mGzqkk1NWQRWv4R/kHnWsoO8wAABVu9UDMy5emQzUVavUhYP6osQ4aUCZB1MEEABNUJtyCg2Q+TOJHfiddlnOVeUOle8+Z26XNvDRh0IuEomXt1cRm7bsGQf0sJHnM9ZUhPp0nTKsHW14TB7EAFt7OZIWzz5SzvdlayVs19txZX9beUSRGlKfYLOgu2cX9/CVXndIvKvUTb4Au+una67A6CSbN803kQE0="
 
       install:
         - pip install twine
       script:
         - python pypack.py pypack.py
         - twine upload *.zip
-      on:
-        tags: true
