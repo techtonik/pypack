@@ -1,4 +1,6 @@
-No boilerplate way to create executable source package for Python module.
+No boilerplate way to create (executable) source packages for Python modules.
+
+[![Build Status](https://img.shields.io/travis/techtonik/pypack/master)](https://travis-ci.org/techtonik/pypack/branches) [![PyPI](https://img.shields.io/pypi/v/pypack)](https://pypi.python.org/pypi/pypack)
 
 ```
 $ python -m pypack appvey.py
