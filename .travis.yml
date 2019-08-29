@@ -12,13 +12,11 @@ python:
   - "3.7-dev"
   - "3.8-dev"
 
+script:
+  - python pypack.py pypack.py
+
 jobs:
   include:
-    - stage: test
-      install: skip
-      script:
-       - python pypack.py pypack.py
-
     - stage: deploy
       python: 2.7
       script: skip
