@@ -9,3 +9,12 @@ python:
 
 script:
   - python pypack.py pypack.py
+
+
+deploy:
+  provider: pypi
+  user: "__token__"
+  password:
+    secure: "vgYo9YrYepaphkNE7HMwkTYdb+wNZMB4j7lOIqqawypsRtNezEUlySEKxbMpjsFjeV4KqhxV2VmxBtQWgR01gXMlME+h63pN20I2jXB7piiuO2J6rJaONSUlRJmJMkXWEzqVDtRuDAAi4uue1mKWCbKMozcSy9uuLvpoCnqt3XvtRuMHhy2WbGEVeGA7w+sVXk00dR5id/i/2Sgj+7eE+bFjophIqgW/VGWLXOaLWasI4eZ0YYEGfca6bqJZE8Xvu7MFWcZ/KiODb3oECFAkQ+t2+YX2wwmANACq9v42WDoEyTo5No+SenRw/Oz6tO4Js3HIRMpN+twVJMQPZcsDPKIspia2/2nrUcWPrclWT0mF53Hk4S1CdxyXMqy4rzCLKyxWw1EQuON7UgwulC6KsEP1V6VYrhwrtR3ym2KO1bfnCyAnp4kRIe/lEjIYq3NrqxbL2GjfpIAql6AizOQDgjhfnhgKxANQAvsKPFKZX67WX0L1fRuMK45q51BamP40NdO1NjoAvo26G3ugIvyQIz7yoV3rmAlllQp2ZqGByeQi2kwipJnO7OH/JI6onbYZ2LDXWn2ydIJ2NzG08JtfdXHxcHidLgoG0VXUf5k+pTmTqKUk3GaRt8saVXrT5ZV+/KiA0iYEgOaibyAszPAht4HmEZwTiHJL0TRBesdZrr0="
+  on:
+    tags: true
