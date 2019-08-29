@@ -15,6 +15,7 @@ python:
 jobs:
   include:
     - stage: test
+      install: skip
       script:
        - python pypack.py pypack.py
 
