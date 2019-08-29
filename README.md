@@ -22,6 +22,10 @@ $ python -m pypack appvey.py
  * Command line script entry for the `main()` function
  * `requirements.txt` detected and included
 
+#### Changes
+
+ * `1.0` - Python 3 compatibility fix
+
 #### Details
 
 Necessary package fields are read from the .py module, without
@@ -32,13 +36,13 @@ imporing it:
   * `__version__`
   * `__url__`
 
-Also detects and inserts these optional fields:
+Also detects and restores these optional fields:
 
   * `__license__`
   * `description` - first line of module docstring
 
 Python packaging still relies on `setup.py`, so it is created
-automatically.
+automatically (but this may change with PEP-517 and PEP-518).
 
 `requirements.txt` should use safe setuptools subset
 https://github.com/pypa/setuptools/issues/1080#issuecomment-313934637
@@ -53,13 +57,15 @@ https://github.com/pypa/setuptools/issues/1080#issuecomment-313934637
 
 * [ ] Write changelog
 
-* [ ] Upload archive to PyPI
-
-        twine upload <package.zip>
-
 * [ ] Tag release
 
     ```
     git tag -a
     git push --follow-tags
+    ```
+
+* [ ] Upload archive to PyPI
+
+    ```
+    twine upload <package.zip>
     ```
